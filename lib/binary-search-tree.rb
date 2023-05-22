@@ -85,10 +85,8 @@ end
 
 def delete(value, root_node = @root)
 
-
   # no child nodes
   return nil if root_node.left_node.nil? && root_node.right_node.nil?
-
 
   #recurse into child nodes
   if root_node.data > value
@@ -97,30 +95,26 @@ def delete(value, root_node = @root)
     root_node.right_node = delete(value, root_node.right_node)
   end
 
-
-  p root_node.data
-
-  # one child node
+  # one child node case
   return root_node.right_node if root_node.left_node.nil? && root_node.right_node && root_node.data == value
   return root_node.left_node if root_node.right_node.nil? && root_node.left_node && root_node.data == value
 
-# 2 child nodes
-# succesor
+# 2 child nodes case
+# succesor or predecessor mechanisms
+
+# succesor .... use either successor or predecessor deletion nodes
   succesor_node = succesory(root_node.right_node) if root_node.right_node && root_node.left_node && root_node.data == value
   root_node.data = succesor_node if root_node.right_node && root_node.left_node && root_node.data == value
   root_node.right_node = delete(succesor_node, root_node.right_node) if root_node.right_node && root_node.left_node && root_node.data == succesor_node
 
-# or predecessor
-  succesor_node = succesory(root_node.right_node) if root_node.right_node && root_node.left_node && root_node.data == value
-  root_node.data = succesor_node if root_node.right_node && root_node.left_node && root_node.data == value
-  root_node.right_node = delete(succesor_node, root_node.right_node) if root_node.right_node && root_node.left_node && root_node.data == succesor_node
+# predecessor .... use either successor or predecessor deletion nodes
 
-
+  # predecessor_node = predecessory(root_node.left_node) if root_node.right_node && root_node.left_node && root_node.data == value
+  # root_node.data = predecessor_node if root_node.right_node && root_node.left_node && root_node.data == value
+  # root_node.left_node = delete(predecessor_node, root_node.left_node) if root_node.right_node && root_node.left_node && root_node.data == succepredecessor_nodesor_node
   root_node
 
-
-
-end
+  end
 
 
 
