@@ -23,7 +23,7 @@ end
 puts "The tree is " + (node.balanced ? "balanced" : "unbalnced")
 
 # Balance the tree by calling #rebalance
-node.rebalanced
+node.rebalance
 
 # Confirm that the tree is balanced by calling #balanced?
 puts "The tree is " + (node.balanced ? "balanced" : "unbalnced")
