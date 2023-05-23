@@ -284,9 +284,9 @@ class Tree
 
     return if self.balanced
 
-    @root = build_tree(self.preoder, 0, self.postoder.length - 1)
-    @root = build_tree(self.preoder, 0, self.postoder.length - 1) if !self.balanced
-    @root = build_tree(self.preoder, 0, self.postoder.length - 1) if !self.balanced
+    @root = build_tree(self.preorder, 0, self.preorder.length - 1)
+    @root = build_tree(self.postorder, 0, self.postorder.length - 1) if !self.balanced
+    @root = build_tree(self.inorder, 0, self.inorder.length - 1) if !self.balanced
 
   end
 
