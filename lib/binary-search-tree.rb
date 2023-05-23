@@ -266,7 +266,29 @@ class Tree
     root_node - searched_node
   end
 
+# Write a #balanced? method which checks if the tree is balanced.
+# A balanced tree is one where the difference between heights of left
+# subtree and right subtree of every node is not more than 1.
+  def balanced
 
+    left_subtree = height(@root.left_node)
+    right_subtree = height(@root.right_node)
+
+    return (left_subtree - right_subtree).abs <= 1
+  end
+
+# Write a #rebalance method which rebalances an unbalanced tree.
+# Tip: You’ll want to use a traversal method to provide a new array to the
+# #build_tree method.
+  def rebalance
+
+    return if self.balanced
+
+    @root = build_tree(self.preoder, 0, self.postoder.length - 1)
+    @root = build_tree(self.preoder, 0, self.postoder.length - 1) if !self.balanced
+    @root = build_tree(self.preoder, 0, self.postoder.length - 1) if !self.balanced
+
+  end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right_node, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_node
