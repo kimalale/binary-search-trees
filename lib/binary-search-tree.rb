@@ -246,6 +246,27 @@ class Tree
 
   end
 
+  # height of edge nodes from given node
+  def height(root_node = @root)
+
+    return -1 if root_node.nil?
+
+    left_node = height(root_node.left_node)
+    right_node =height(root_node.right_node)
+
+   [left_node, right_node].max + 1
+  end
+
+  # depth of egdes node from given node to root node
+  def depth(search_node = @root_node, root_node = @root)
+
+    root_node = height(root_node)
+    searched_node = height(search_node)
+
+    root_node - searched_node
+  end
+
+
 
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right_node, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right_node
